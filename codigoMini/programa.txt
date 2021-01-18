@@ -1,0 +1,15 @@
+:DECLARACIONES
+argumento:INT
+factorial:INT
+
+:ALGORITMO
+% Calcula el factorial de un número entero
+LEER argumento
+ASIGNAR argumento A factorial
+SI argumento = 0 ENTONCES ASIGNAR 1 A factorial
+MIENTRAS argumento>=10.0
+    INICIO
+        ASIGNAR factorial * (argumento - 1) A factorial 
+        ASIGNAR argumento - 1 A argumento
+    FIN
+IMPRIMIR factorial
