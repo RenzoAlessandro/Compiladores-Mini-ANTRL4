@@ -3,7 +3,15 @@ argumento:INT
 factorial:INT
 
 :ALGORITMO
-% Calcula el factorial de un número entero
+//
+//esto es un comentario N 1
+
+
+/** Calcula el factorial de un número entero */
+/* comentario 2 */
+/*** comentario 3 */
+
+/*comentario 3******/
 LEER argumento
 ASIGNAR argumento A factorial
 SI argumento = 0 ENTONCES ASIGNAR 1 A factorial
