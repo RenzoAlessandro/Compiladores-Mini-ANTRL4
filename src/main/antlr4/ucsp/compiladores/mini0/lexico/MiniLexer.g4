@@ -1,16 +1,19 @@
 lexer grammar MiniLexer;
 
-PALABRA_CLAVE :     'DECLARACIONES' | 'ALGORITMO' | 'INT' | 'REAL' | 'ASIGNAR' |
-                    'A' | 'LEER' | 'IMPRIMIR' | 'SI' | 'ENTONCES'
-                    | 'MIENTRAS' | 'INICIO' | 'FIN' | 'Y' | 'O'
-              ;
+PALABRAS_RESERVADAS :  'if' | 'else' | 'end' | 'while' | 'loop' | 'fun' |
+                       'return' | 'new' | 'string' | 'int' | 'char' |
+                       'bool' | 'true' | 'false' | 'and' | 'or' | 'not'
+                    ;
 
-NUMINT   : ('+'|'-')?('0'..'9')+
+NUMERAL :  ( ('+'|'-')?('0'..'9') | (('0x') ('0'..'9'|'a'..'z'|'A'..'Z')) )+
+        ;
+
+IDENTIFICADORES : ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'0'..'9'|'_')*
          ;
-NUMREAL  : ('+'|'-')?('0'..'9')+ ('.' ('0'..'9')+)?
-         ;
-VARIABLE : ('a'..'z'|'A'..'Z') ('a'..'z'|'A'..'Z'|'0'..'9')*
-         ;
+
+STRINGS : '"' ( ('\\'|'\n'|'\r'|'\t') | ~('\'') )* '"'
+        ;
+
 fragment
 ESC_SEQ  :  '\\\''
          ;
@@ -18,19 +21,17 @@ COMENTARIO_1  :   '//' (~('\n'|'\r'))*
               ;
 COMENTARIO_2  : '/*' .*? '*'+ '/'
               ;
+
 WS : ( ' '
         | '\t'
         | '\r'
         | '\n'
         ) ->skip
    ;
-OP_REL  : '>' | '>=' | '<' | '<=' | '<>' | '='
+OP_REL  : '>' | '>=' | '<' | '<=' | '=' | '<>' 
         ;
 OP_ARIT : '+' | '-' | '*' | '/'
         ;
-DELIM   : ':'
+
+PUNTUACION : '(' | ')' | ',' | ':' | '[' | ']'
         ;
-ABREPAR : '('
-        ;
-CIERRAPAR : ')'
-          ;
