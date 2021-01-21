@@ -5,7 +5,7 @@ PALABRAS_RESERVADAS :  'if' | 'else' | 'end' | 'while' | 'loop' | 'fun' |
                        'bool' | 'true' | 'false' | 'and' | 'or' | 'not'
                     ;
 
-NUMERAL :  ( ('+'|'-')?('0'..'9') | (('0x') ('0'..'9'|'a'..'z'|'A'..'Z')) )+
+NUMERAL :  ( ('+'|'-')?('0'..'9') | (('0x') ('0'..'9'|'a'..'f'|'A'..'F')+) )+
         ;
 
 IDENTIFICADORES : ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'0'..'9'|'_')*

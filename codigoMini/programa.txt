@@ -14,7 +14,7 @@ frase:string
 frase = "amigo 
 km"
 
-if arg_1 = 0x65D factorial = 0 else arg2 = 1
+if arg_1 = 0xFd arg2 = 0x47e else arg2 = 1
 
 while ( arg_1>=10 )
    arg2 = arg2 * (arg_1 - 1) A arg2 
