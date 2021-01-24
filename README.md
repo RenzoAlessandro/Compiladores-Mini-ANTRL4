@@ -3,7 +3,7 @@
 ## Creditos 
 Este proyecto es programado por:
 * [Renzo Sucari](https://github.com/RenzoAlessandro)
-* [Anabel Paredes]
+* [Anabel Paredes](https://github.com/anabeL19)
 
 Docente: 
 * [Marcela Quispe Cruz]

@@ -1,0 +1,35 @@
+
+variable_1 : int
+variable_2 :char
+variable_3: bool
+variable_4:string 
+
+// esto es un comentario
+
+/* esto es un comentario 2 */
+/* 
+    esto es un 
+    comentario 3 
+*/
+
+fun multiplicar ()
+end
+
+fun sumar (varB:int,varC:bool) : int
+    varD:string 
+    varF:int
+    varG:[]string
+    varH : [ ] string
+end 
+
+fun dividir (varA:int)
+    if (a<b)
+        a=true
+    end
+end
+
+fun operaciones()
+    sumar()
+    multiplicar()
+end
+
