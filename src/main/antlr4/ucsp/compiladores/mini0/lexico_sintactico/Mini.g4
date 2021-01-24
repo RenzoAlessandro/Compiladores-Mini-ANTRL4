@@ -14,7 +14,7 @@ nl       : NL NL*
 global   : declvar nl
          ; 
 
-funcion  : 'fun' IDENTIFICADORES '(' params ')' (':' tipo)? nl
+funcion  : 'fun' ID '(' params ')' (':' tipo)? nl
            bloque
          'end' NL
          ;
