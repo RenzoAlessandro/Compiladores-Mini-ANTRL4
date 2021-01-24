@@ -1,0 +1,5 @@
+arg : int
+arg2 : int
+
+if ( arg > arg2 )
+	arg = 6

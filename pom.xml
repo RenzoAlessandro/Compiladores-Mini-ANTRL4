@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>ucsp.compiladores</groupId>
-    <artifactId>Mini0-lexico</artifactId>
+    <artifactId>Mini0-lexico_sintactico</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <dependencies>
@@ -38,7 +38,7 @@
             <configuration>
                 <archive>
                     <manifest>
-                        <mainClass>ucsp.compiladores.mini0.lexico.Principal</mainClass>
+                        <mainClass>ucsp.compiladores.mini0.lexico_sintactico.Principal</mainClass>
                     </manifest>
                 </archive>
                 <descriptorRefs>
