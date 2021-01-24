@@ -12,8 +12,8 @@ import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.Token;
 
 public class Principal {
-    public static void main(String[] args) throws IOException{
-        //try {
+    public static void main(String[] args){
+        try {
             // args[0] es el primer argumento de la linea de comando 
             CharStream cs = CharStreams.fromFileName(args[0]);
             MiniLexer lexer = new MiniLexer(cs);
@@ -28,7 +28,7 @@ public class Principal {
             MiniParser parser = new MiniParser(tokens);
             parser.programa();
             
-        //} catch (IOException ex) {
-        //} 
+        } catch (IOException ex) {
+        } 
     }
 }
