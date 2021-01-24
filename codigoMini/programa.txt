@@ -1,7 +1,10 @@
 arg_1:int
 arg2:int
-arr_N_1 [] :char
+arr_N_1:[]char
 frase:string
+
+fun hola():string end
+
 
 //
 //esto es un comentario N 1
