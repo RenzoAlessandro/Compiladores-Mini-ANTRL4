@@ -25,4 +25,20 @@ fun main() :bool
   return c and b
 end
 
-
+fun hehe(c:char):bool
+   i: int
+   i = 0
+   if c = 64
+      while i < 10
+         if i / 2 * 2 = i
+            return a
+         else
+            return c
+         end
+         i = (5+15)/4
+      loop
+      return true
+   else
+      return false
+   end
+end

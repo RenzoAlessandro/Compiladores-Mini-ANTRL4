@@ -1,6 +1,5 @@
 //Line comment
 fun foo(var:bool, _var2:int) :string
-
     if 0xFA <>var2
         intvariable:int
         stringvariable:string 
