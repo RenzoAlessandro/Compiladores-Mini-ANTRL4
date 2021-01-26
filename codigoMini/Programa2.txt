@@ -1,0 +1,36 @@
+/* 
+    PRUEBA DE COMENTARIOS
+    
+    Nos percatamos que las palabras fuera de los comentarios 
+    los detecta como IDENTIFICADORES en el nivel lexico mientras 
+    que esta a la espera de dos puntos de la regla de declvar
+*/
+
+// comentario
+bla bla bla // comentario
+// otro comentario
+
+/* multi-comentario en una línea */
+/* multi-comentario 
+en dos líneas */
+anterior1  /* multi-comentario en una línea */
+/* multi-comentario en una línea */ despues1 
+anterior2  /* multi-comentario 
+en dos líneas */
+/* multi-comentario 
+en dos líneas */ despues2
+
+
+/* esto es un comentario 2 */
+/* esto es un comentario 3 */
+/* 
+    esto es un 
+    comentario 3 
+
+*/
+/* esto es un comentario 2 */
+
+/* esto es un comentario 2 */
+// hola
+
+variable_1 : int

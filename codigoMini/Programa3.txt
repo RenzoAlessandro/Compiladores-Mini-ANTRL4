@@ -1,3 +1,16 @@
+/* 
+    PRUEBA DE DECLARACION DE VARIABLES GLOBALES
+*/
+
+arg_1:int
+arg2:int
+
+
+/* 
+    PRUEBA DE DECLARACION DE VARIABLES DENTRO FUNCIONES
+    Las declaraciones de variables se dan en los encabezados de una funcion,
+    if y while.
+*/
 
 variable_1 : int
 variable_2 :char
@@ -11,7 +24,6 @@ variable_4:string
     esto es un 
     comentario 3 
 */
-
 fun multiplicar ()
 end
 
@@ -20,11 +32,14 @@ fun sumar (varB:int,varC:bool) : int
     varF:int
     varG:[]string
     varH : [ ] string
-end 
+end
 
+/*hola*/
 fun dividir (varA:int)
     if (a<b)
+        varJ:int
         a=true
+        arg2 = arg2 * (arg_1 - 1)
     end
 end
 
@@ -32,4 +47,3 @@ fun operaciones()
     sumar()
     multiplicar()
 end
-

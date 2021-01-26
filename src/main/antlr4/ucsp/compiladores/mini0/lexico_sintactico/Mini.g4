@@ -19,12 +19,13 @@ global   : declvar nl
          ; 
 
 funcion  : 'fun' ID '(' params? ')' (':' tipo)? nl
+            { System.out.println("    FUNCION: Fun="+$ID.text+", Tipo="+$tipo.text); }
            bloque
            'end' NL
          ;
 
 bloque   : (declvar nl)*
-           (comando nl)*
+           (cmd=comando { System.out.println("    COMANDO DE TIPO: "+$cmd.tipoComando); } nl)*
          ;
  
 params   : parametro (',' parametro)*
@@ -40,9 +41,15 @@ tipobase : 'int' | 'bool' | 'char' | 'string'
          ;
 
 declvar  : ID ':' tipo
+           { System.out.println("    DECLARACION: Var="+$ID.text+", Tipo="+$tipo.text); }
          ;
 
-comando  : cmdif | cmdwhile | cmdasign | cmdreturn | llamada
+comando  returns [ String tipoComando ]
+         : cmdif       { $tipoComando = "IF"; }
+           | cmdwhile  { $tipoComando = "WHILE"; }
+           | cmdasign  { $tipoComando = "ASIGNACION"; }
+           | cmdreturn { $tipoComando = "RETURN"; }
+           | llamada   { $tipoComando = "LLAMADA"; }
          ;
 
 cmdif    : 'if' exp nl
@@ -58,6 +65,7 @@ cmdwhile : 'while' exp nl
          ;
 
 cmdasign : var '=' exp
+           { System.out.println("       "+$var.text+" = "+$exp.text); }
          ;
 
 llamada  :  ID '(' listaexp? ')'
@@ -112,17 +120,18 @@ PALABRAS_RESERVADAS :  'if' | 'else' | 'end' | 'while' | 'loop' | 'fun' |
 LITNUMERAL :  ( ('+'|'-')?('0'..'9') | (('0x') ('0'..'9'|'a'..'f'|'A'..'F')+) )+
         ;
 
-ID : ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'0'..'9'|'_')*
-         ;
+ID      : ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'0'..'9'|'_')*
+        ;
 
 LITSTRING : '"' ( ('\\'|'\n'|'\r'|'\t') | ~('\'') )* '"'
         ;
 
 BLOCKCOMMENT
-        : '/*' .*? '*/' {skip();} 
+        : '/*' .*? '*/' WS {skip();} 
         ;
+
 LINECOMMENT
-        : '//' ~[\r\n]* {skip();} 
+        : '//' ~('\n'|'\r')* '\r'? '\n' {skip();}
         ;
 
 NL      : ('\n')+
