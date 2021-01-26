@@ -86,7 +86,7 @@ exp      : LITNUMERAL
          | var 
          | 'new' '[' exp ']' tipo 
          | '(' exp ')' 
-         | llamada 
+         | llamada
          | exp '+' exp 
          | exp '-' exp 
          | exp '*' exp 
