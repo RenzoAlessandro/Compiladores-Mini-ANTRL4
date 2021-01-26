@@ -17,20 +17,12 @@ Analizador léxico + sintáctico para el Lenguaje Mini-0
 
 #### IMPLEMENTACIÓN DE UN ANALIZADOR LÉXICO + SINTÁCTICO
 ```
-:DECLARACIONES
-argumento:INT
-factorial:INT
-
-:ALGORITMO
-% Calcula el factorial de un número entero
-LEER argumento
-ASIGNAR argumento A factorial
-SI argumento = 0 ENTONCES ASIGNAR 1 A factorial
-MIENTRAS argumento>=10.0
-    INICIO
-        ASIGNAR factorial * (argumento - 1) A factorial 
-        ASIGNAR argumento - 1 A argumento
-    FIN
-IMPRIMIR factorial
+fun fibonacci(i:int):int
+   if i <= 1
+      return 1
+   else
+      return fibonacci(i - 1) + fibonacci(i - 2)
+   end
+end
 
 ```
