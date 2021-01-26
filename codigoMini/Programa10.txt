@@ -1,0 +1,35 @@
+/* 
+    FIBONACCI
+*/ 
+
+fun fibonacci(i:int):int
+   if i <= 1
+      return 1
+   else
+      return fibonacci(i - 1) + fibonacci(i - 2)
+   end
+end
+
+
+fun fibonacci2(num:int):int
+    x:int
+    y:int
+    z:int
+    x = 0
+    y = 1
+    z = 0
+    i:int
+    i = 0
+   while (i < num)
+      z = x + y
+      x = y
+      y = z
+      i = i + 1
+   loop
+end
+
+fun main()
+   num:int
+   fibonacci2(num)
+   return 0
+end

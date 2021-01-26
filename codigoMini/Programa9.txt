@@ -1,0 +1,44 @@
+/* 
+    PRUEBA DE NEWs - RESTRICCION
+    Solo es posible usar los NEW en asignaciones y no en declaraciones.
+    cmdasign : var '=' exp
+    declvar  : ID ':' tipo
+*/
+
+fun the_answer():char
+   return 42
+end
+
+fun main() :bool
+  a=new [20]char
+  a="Teste Lexico"
+  b=new [5+4]int
+  b=10
+  c=new [50]int
+  c=25
+  if c > b
+     b=b*3
+  end
+  while c <> 0
+     _int = 46+(46-2)
+  loop
+  return c and b
+end
+
+fun hehe(c:char):bool
+   i: int
+   i = 0
+   if c = 64
+      while i < 10
+         if i / 2 * 2 = i
+            return a
+         else
+            return c
+         end
+         i = (5+15)/4
+      loop
+      return true
+   else
+      return false
+   end
+end

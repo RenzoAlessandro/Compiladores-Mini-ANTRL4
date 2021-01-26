@@ -1,0 +1,24 @@
+/* 
+    PRUEBA DE FUNCIONES
+*/
+
+fun sumar (varB:int,varC:bool,varD:char) : int
+    varD:string 
+    varF:int
+    varG:[]string
+    varH : [ ] string
+end
+
+fun dividir (varA:int)
+    frase = true
+    if arg_1 = 0xFd
+        arg2 = 0x47e
+    else 
+        arg2 = 1
+    end
+    while ( arg_1>=10 )
+        arg2 = arg2 * (arg_1 - 1)
+        arg2 = arg_1 - 1
+    loop
+    return factorial
+end 
