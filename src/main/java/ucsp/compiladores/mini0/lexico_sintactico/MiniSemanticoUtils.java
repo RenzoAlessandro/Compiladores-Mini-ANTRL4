@@ -23,28 +23,28 @@ public class MiniSemanticoUtils {
         erroresSemanticos.add(String.format("Error Semántico %d:%d - %s", linea, columna, mensaje));
     }
 
-    public static TablaDeSimbolos.TipoAlguma verificarTipo(TablaDeSimbolos tabla, MiniParser.ExpContext ctx) {
+    public static TablaDeSimbolos.TipoMini verificarTipo(TablaDeSimbolos tabla, MiniParser.ExpContext ctx) {
         if (ctx.LITNUMERAL() != null) {
-            return TablaDeSimbolos.TipoAlguma.ENTERO;
+            return TablaDeSimbolos.TipoMini.ENTERO;
         }
         if (ctx.LITSTRING() != null) {
-            return TablaDeSimbolos.TipoAlguma.STRING; 
+            return TablaDeSimbolos.TipoMini.STRING; 
         }
         
         if (ctx.var().ID() != null) {
             String nombreVar = ctx.var().ID().getText(); 
             if (!tabla.existe(nombreVar)) {
                 adicionarErrorSemantico(ctx.var().ID().getSymbol(), "Variable " + nombreVar + " no fue declarada antes de uso"); //getSymbol retorna el token que tiene línea y columna
-                return TablaDeSimbolos.TipoAlguma.INVALIDO; 
+                return TablaDeSimbolos.TipoMini.INVALIDO; 
             }
             return verificarTipo(tabla, nombreVar); 
         }
         
-        return TablaDeSimbolos.TipoAlguma.INVALIDO; 
+        return TablaDeSimbolos.TipoMini.INVALIDO; 
     }
     
     
-    public static TablaDeSimbolos.TipoAlguma verificarTipo(TablaDeSimbolos tabla, String nombreVar) {
+    public static TablaDeSimbolos.TipoMini verificarTipo(TablaDeSimbolos tabla, String nombreVar) {
         return tabla.verificar(nombreVar); 
     }
     

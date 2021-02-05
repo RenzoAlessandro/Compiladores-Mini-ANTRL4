@@ -7,7 +7,7 @@ package ucsp.compiladores.mini0.lexico_sintactico;
 
 import ucsp.compiladores.mini0.lexico_sintactico.MiniParser;
 import ucsp.compiladores.mini0.lexico_sintactico.MiniBaseVisitor;
-import ucsp.compiladores.mini0.lexico_sintactico.TablaDeSimbolos.TipoAlguma;
+import ucsp.compiladores.mini0.lexico_sintactico.TablaDeSimbolos.TipoMini;
 
 
 public class MiniSemantico extends MiniBaseVisitor<Void> {
@@ -24,13 +24,13 @@ public class MiniSemantico extends MiniBaseVisitor<Void> {
     public Void visitDeclvar(MiniParser.DeclvarContext ctx) {
         String nombreVar = ctx.ID().getText(); 
         String strTipoVar = ctx.tipo().tipobase().getText(); 
-        TipoAlguma tipoVar = TipoAlguma.INVALIDO; 
+        TipoMini tipoVar = TipoMini.INVALIDO; 
         switch (strTipoVar) {
             case "int":
-                tipoVar = TipoAlguma.ENTERO;
+                tipoVar = TipoMini.ENTERO;
                 break;
             case "string":
-                tipoVar = TipoAlguma.STRING;
+                tipoVar = TipoMini.STRING;
                 break;
             default:
                 break;
@@ -46,14 +46,14 @@ public class MiniSemantico extends MiniBaseVisitor<Void> {
     
     @Override
     public Void visitCmdasign(MiniParser.CmdasignContext ctx) {
-        TipoAlguma tipoExpresion = MiniSemanticoUtils.verificarTipo(tabla, ctx.exp());
-        if (tipoExpresion != TipoAlguma.INVALIDO) {
+        TipoMini tipoExpresion = MiniSemanticoUtils.verificarTipo(tabla, ctx.exp());
+        if (tipoExpresion != TipoMini.INVALIDO) {
             String nombreVar = ctx.var().ID().getText();
             if (!tabla.existe(nombreVar)) {
                 MiniSemanticoUtils.adicionarErrorSemantico(ctx.var().ID().getSymbol(),"Variable "+ nombreVar + " no fue declarada antes de uso");
             } else {
-                TipoAlguma tipoVariable = MiniSemanticoUtils.verificarTipo(tabla, nombreVar);
-                if (tipoVariable != tipoExpresion && tipoExpresion != TipoAlguma.INVALIDO) {
+                TipoMini tipoVariable = MiniSemanticoUtils.verificarTipo(tabla, nombreVar);
+                if (tipoVariable != tipoExpresion && tipoExpresion != TipoMini.INVALIDO) {
                     MiniSemanticoUtils.adicionarErrorSemantico(ctx.var().ID().getSymbol(),"Tipo de la variable" + nombreVar + " no es compatible con el tipo de la expresión");
                 }
             }
