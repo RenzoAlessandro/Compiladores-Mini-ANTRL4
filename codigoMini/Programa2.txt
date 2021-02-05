@@ -1,4 +1,3 @@
-
 /* 
      PRUEBA DE COMENTARIOS
 
@@ -8,18 +7,18 @@
  */
 
  // comentario
- bla bla bla // comentario
+ // comentario
  // otro comentario
 
  /* multi-comentario en una línea */
  /* multi-comentario 
  en dos líneas */
- anterior1  /* multi-comentario en una línea */
- /* multi-comentario en una línea */ despues1 
- anterior2  /* multi-comentario 
+   /* multi-comentario en una línea */
+ /* multi-comentario en una línea */  
+   /* multi-comentario 
  en dos líneas */
  /* multi-comentario 
- en dos líneas */ despues2
+ en dos líneas */ 
 
 
  /* esto es un comentario 2 */
