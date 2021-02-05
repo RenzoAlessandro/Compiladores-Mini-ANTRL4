@@ -52,29 +52,29 @@ comando   returns [ String tipoComando ]
             | llamada   { $tipoComando = "LLAMADA"; }
           ;
 
-cmdif     : 'if' exp nl
+cmdif     : 'if' expRel nl
             bloque
-            ('else' 'if' exp nl bloque)*
+            ('else' 'if' expRel nl bloque)*
             ('else' nl bloque)?
             'end'
           ;
 
-cmdwhile  : 'while' exp nl
+cmdwhile  : 'while' expRel nl
             bloque
             'loop' 
           ;
 
-cmdasign  : var '=' exp
-            { System.out.println("       "+$var.text+" = "+$exp.text); }
+cmdasign  : var '=' expArit
+            { System.out.println("       "+$var.text+" = "+$expArit.text); }
           ;
 
 llamada   :  ID '(' listaexp? ')'
           ;
 
-listaexp  : exp (',' exp)*
+listaexp  : expArit (',' expArit)*
           ;
 
-cmdreturn : 'return' exp | 'return'
+cmdreturn : 'return' expArit | 'return'
           ;
 
 var       : ID | var '[' exp ']'

@@ -21,7 +21,6 @@ public class MiniSemantico extends MiniBaseVisitor<Void> {
         return super.visitPrograma(ctx);
     }
     
-    // se va a colocar las variabes en la tabla de símbolos y sus tipos
     @Override
     public Void visitDeclvar(MiniParser.DeclvarContext ctx) {
         String nombreVar = ctx.ID().getText();
@@ -41,11 +40,9 @@ public class MiniSemantico extends MiniBaseVisitor<Void> {
                 tipoVar = TipoMini.STRING;
                 break;
             default:
-                // Nunca sucederá, pues el analizador sintáctico
-                // no permite
                 break;
         }
-        // Verificar si la variable ya fue declarada
+        
         if (tabla.existe(nombreVar)) {
             MiniSemanticoUtils.adicionarErrorSemantico(ctx.ID().getSymbol(), "Variable" + nombreVar + " ya existe");
         } else {
@@ -55,25 +52,25 @@ public class MiniSemantico extends MiniBaseVisitor<Void> {
     }
     
     @Override
-    public Void visitComandoAsignacion(MiniParser.CmdasignContext ctx) {
+    public Void visitCmdasign(MiniParser.CmdasignContext ctx) {
         TipoMini tipoExpresion = MiniSemanticoUtils.verificarTipo(tabla, ctx.expArit());
         if (tipoExpresion != TipoMini.INVALIDO) {
-            String nombreVar = ctx.VARIABLE().getText();
+            String nombreVar = ctx.var().ID().getText();
             if (!tabla.existe(nombreVar)) {
-                MiniSemanticoUtils.adicionarErrorSemantico(ctx.VARIABLE().getSymbol(),
+                MiniSemanticoUtils.adicionarErrorSemantico(ctx.var().ID().getSymbol(),
                "Variable " + nombreVar + " no fue declarada antes de uso");
             } else {
                 TipoMini tipoVariable = MiniSemanticoUtils.verificarTipo(tabla,
                nombreVar);
                 if (tipoVariable != tipoExpresion && tipoExpresion != TipoMini.INVALIDO) {
-                    MiniSemanticoUtils.adicionarErrorSemantico(ctx.VARIABLE().getSymbol(),
+                    MiniSemanticoUtils.adicionarErrorSemantico(ctx.var().ID().getSymbol(),
                "Tipo de la variable " + nombreVar + " no es compatible con el tipo de la expresión");
                 }
             }
         }
-        return super.visitComandoAsignacion(ctx);
+        return super.visitCmdasign(ctx);
     }
-    
+    /*
     // verificación adicional visitComandoEntrada que es de la lectura
     @Override
     public Void visitComandoEntrada(MiniParser.ComandoEntradaContext ctx) {
@@ -84,10 +81,11 @@ public class MiniSemantico extends MiniBaseVisitor<Void> {
         }
         return super.visitComandoEntrada(ctx);
     }
-    
+    */
     @Override
-    public Void visitExpresionAritmetica(MiniParser.ExpresionAritmeticaContext ctx) {
+    public Void visitExpArit(MiniParser.ExpAritContext ctx) {
         MiniSemanticoUtils.verificarTipo(tabla, ctx);
-        return super.visitExpresionAritmetica(ctx);
+        return super.visitExpArit(ctx);
     }
+
 }

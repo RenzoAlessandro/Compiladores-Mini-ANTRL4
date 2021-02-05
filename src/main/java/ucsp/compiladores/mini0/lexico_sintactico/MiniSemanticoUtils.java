@@ -86,4 +86,5 @@ public class MiniSemanticoUtils {
     // verificar tipo nombre-variable     
         return tabla.verificar(nombreVar);
     }
+
 }
