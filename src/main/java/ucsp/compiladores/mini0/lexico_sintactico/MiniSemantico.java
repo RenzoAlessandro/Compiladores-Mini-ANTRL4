@@ -24,7 +24,7 @@ public class MiniSemantico extends MiniBaseVisitor<Void> {
     @Override
     public Void visitDeclvar(MiniParser.DeclvarContext ctx) {
         String nombreVar = ctx.ID().getText();
-        String strTipoVar = ctx.tipo().getText();
+        String strTipoVar = ctx.tipo().tipobase().getText();
         TipoMini tipoVar = TipoMini.INVALIDO;
         switch (strTipoVar) {
             case "int":

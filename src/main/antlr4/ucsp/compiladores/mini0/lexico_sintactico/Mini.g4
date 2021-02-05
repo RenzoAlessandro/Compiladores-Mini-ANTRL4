@@ -81,28 +81,6 @@ var       : ID | var '[' exp ']'
           ;
 
 /*  prioridad de los operadores   */
-exp       : LITNUMERAL 
-          | LITSTRING 
-          | TRUE | FALSE 
-          | var 
-          | 'new' '[' exp ']' tipo 
-          | '(' exp ')' 
-          | llamada
-          | exp '+' exp 
-          | exp '-' exp 
-          | exp '*' exp 
-          | exp '/' exp 
-          | exp '>' exp 
-          | exp '<' exp 
-          | exp '>=' exp 
-          | exp '<=' exp 
-          | exp '=' exp 
-          | exp '<>' exp 
-          | exp 'and' exp 
-          | exp 'or' exp 
-          | 'not' exp | '-' exp
-          ;
-
 expArit   : termArit (OP_ARIT1 termArit)*;
 termArit  : factorArit (OP_ARIT2 factorArit)*;
 factorArit: LITNUMERAL 
