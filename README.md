@@ -4,6 +4,7 @@
 Este proyecto es programado por:
 * [Renzo Sucari](https://github.com/RenzoAlessandro)
 * [Anabel Paredes](https://github.com/anabeL19)
+* [Gino Liza](https://github.com/gino-lr)
 
 Docente: 
 * [Marcela Quispe Cruz]
