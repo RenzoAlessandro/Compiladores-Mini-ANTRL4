@@ -6,102 +6,118 @@ grammar Mini;
 
  *------------------------------------------------------------------*/
 
-programa : NL* decl (decl)* EOF
-         ;
+programa  : NL* decl (decl)* EOF
+          ;
 
-decl     : funcion | global
-         ;
+decl      : funcion | global
+          ;
 
-nl       : NL NL*
-         ;
+nl        : NL NL*
+          ;
 
-global   : declvar nl
-         ; 
+global    : declvar nl
+          ; 
 
-funcion  : 'fun' ID '(' params? ')' (':' tipo)? nl
-            { System.out.println("    FUNCION: Fun="+$ID.text+", Tipo="+$tipo.text); }
-           bloque
-           'end' NL
-         ;
+funcion   : 'fun' ID '(' params? ')' (':' tipo)? nl
+             { System.out.println("    FUNCION: Fun="+$ID.text+", Tipo="+$tipo.text); }
+            bloque
+            'end' NL
+          ;
 
-bloque   : (declvar nl)*
-           (cmd=comando { System.out.println("    COMANDO DE TIPO: "+$cmd.tipoComando); } nl)*
-         ;
+bloque    : (declvar nl)*
+            (cmd=comando { System.out.println("    COMANDO DE TIPO: "+$cmd.tipoComando); } nl)*
+          ;
  
-params   : parametro (',' parametro)*
-         ;
+params    : parametro (',' parametro)*
+          ;
 
-parametro: ID ':' tipo
-         ;
+parametro : ID ':' tipo
+          ;
 
-tipo     : tipobase | '[' ']' tipo
-         ;
+tipo      : tipobase | '[' ']' tipo
+          ;
 
-tipobase : 'int' | 'bool' | 'char' | 'string'
-         ;
+tipobase  : 'int' | 'bool' | 'char' | 'string'
+          ;
 
-declvar  : ID ':' tipo
-           { System.out.println("    DECLARACION: Var="+$ID.text+", Tipo="+$tipo.text); }
-         ;
+declvar   : ID ':' tipo
+            { System.out.println("    DECLARACION: Var="+$ID.text+", Tipo="+$tipo.text); }
+          ;
 
-comando  returns [ String tipoComando ]
-         : cmdif       { $tipoComando = "IF"; }
-           | cmdwhile  { $tipoComando = "WHILE"; }
-           | cmdasign  { $tipoComando = "ASIGNACION"; }
-           | cmdreturn { $tipoComando = "RETURN"; }
-           | llamada   { $tipoComando = "LLAMADA"; }
-         ;
+comando   returns [ String tipoComando ]
+          : cmdif       { $tipoComando = "IF"; }
+            | cmdwhile  { $tipoComando = "WHILE"; }
+            | cmdasign  { $tipoComando = "ASIGNACION"; }
+            | cmdreturn { $tipoComando = "RETURN"; }
+            | llamada   { $tipoComando = "LLAMADA"; }
+          ;
 
-cmdif    : 'if' exp nl
-           bloque
-           ('else' 'if' exp nl bloque)*
-           ('else' nl bloque)?
-           'end'
-         ;
+cmdif     : 'if' exp nl
+            bloque
+            ('else' 'if' exp nl bloque)*
+            ('else' nl bloque)?
+            'end'
+          ;
 
-cmdwhile : 'while' exp nl
-           bloque
-           'loop' 
-         ;
+cmdwhile  : 'while' exp nl
+            bloque
+            'loop' 
+          ;
 
-cmdasign : var '=' exp
-           { System.out.println("       "+$var.text+" = "+$exp.text); }
-         ;
+cmdasign  : var '=' exp
+            { System.out.println("       "+$var.text+" = "+$exp.text); }
+          ;
 
-llamada  :  ID '(' listaexp? ')'
-         ;
+llamada   :  ID '(' listaexp? ')'
+          ;
 
-listaexp : exp (',' exp)*
-         ;
+listaexp  : exp (',' exp)*
+          ;
 
-cmdreturn: 'return' exp | 'return'
-         ;
+cmdreturn : 'return' exp | 'return'
+          ;
 
-var      : ID | var '[' exp ']'
-         ;
+var       : ID | var '[' exp ']'
+          ;
 
-exp      : LITNUMERAL 
-         | LITSTRING 
-         | TRUE | FALSE 
-         | var 
-         | 'new' '[' exp ']' tipo 
-         | '(' exp ')' 
-         | llamada
-         | exp '+' exp 
-         | exp '-' exp 
-         | exp '*' exp 
-         | exp '/' exp 
-         | exp '>' exp 
-         | exp '<' exp 
-         | exp '>=' exp 
-         | exp '<=' exp 
-         | exp '=' exp 
-         | exp '<>' exp 
-         | exp 'and' exp 
-         | exp 'or' exp 
-         | 'not' exp | '-' exp
-         ;
+/*  prioridad de los operadores   */
+exp       : LITNUMERAL 
+          | LITSTRING 
+          | TRUE | FALSE 
+          | var 
+          | 'new' '[' exp ']' tipo 
+          | '(' exp ')' 
+          | llamada
+          | exp '+' exp 
+          | exp '-' exp 
+          | exp '*' exp 
+          | exp '/' exp 
+          | exp '>' exp 
+          | exp '<' exp 
+          | exp '>=' exp 
+          | exp '<=' exp 
+          | exp '=' exp 
+          | exp '<>' exp 
+          | exp 'and' exp 
+          | exp 'or' exp 
+          | 'not' exp | '-' exp
+          ;
 
+expArit   : termArit (OP_ARIT1 termArit)*;
+termArit  : factorArit (OP_ARIT2 factorArit)*;
+factorArit: LITNUMERAL 
+          | LITSTRING 
+          | TRUE | FALSE 
+          | var 
+          | 'new' '[' exp ']' tipo 
+          | llamada
+          | '(' expArit ')'
+          ; 
+
+/*  corto - circuito  */
+expRel    : OP_LOG termRel | termRel (OP_LOG termRel)*;
+termRel   : expArit OP_REL expArit | '(' expRel ')'
+          ;        
 
 /*------------------------------------------------------------------
 
@@ -143,7 +159,15 @@ WS      : ( ' ' |'\t' | '\r' | NL) {skip();}
 OP_REL  : '>' | '>=' | '<' | '<=' | '=' | '<>' 
         ;
 
-OP_ARIT : '+' | '-' | '*' | '/'
+OP_LOG  : 'and' | 'or' | 'not' | '-'
+        ;
+
+OP_ARIT1 
+        : '+' | '-' 
+        ;
+
+OP_ARIT2 
+        : '*' | '/'
         ;
 
 PUNTUACION : '(' | ')' | ',' | ':' | '[' | ']'

@@ -1,0 +1,23 @@
+arg_1:int
+arg2:int
+arr_N_1 [] :char
+frase:string
+
+//
+//esto es un comentario N 1
+
+/** Calcula el factorial de un número entero */
+/* comentario 2 */
+/*** comentario 3 */
+
+/*comentario 3******/
+frase = "amigo 
+km"
+
+if arg_1 = 0xFd arg2 = 0x47e else arg2 = 1
+
+while ( arg_1>=10 )
+   arg2 = arg2 * (arg_1 - 1) A arg2 
+   arg2 = arg_1 - 1 A arg_1
+loop
+return factorial
