@@ -24,8 +24,8 @@ funcion   : 'fun' ID '(' params? ')' (':' tipo)? nl
             'end' NL
           ;
 
-bloque    : (declvar nl)*
-            (cmd=comando { System.out.println("    COMANDO DE TIPO: "+$cmd.tipoComando); } nl)*
+bloque    : (cmd=comando { System.out.println("    COMANDO DE TIPO: "+$cmd.tipoComando); } nl)*
+            (declvar nl)*
           ;
  
 params    : parametro (',' parametro)*
@@ -77,22 +77,20 @@ listaexp  : expArit (',' expArit)*
 cmdreturn : 'return' expArit | 'return'
           ;
 
-var       : ID | var '[' exp ']'
+var       : ID | var '[' expArit ']'
           ;
 
-/*  prioridad de los operadores   */
 expArit   : termArit (OP_ARIT1 termArit)*;
 termArit  : factorArit (OP_ARIT2 factorArit)*;
 factorArit: LITNUMERAL 
           | LITSTRING 
           | TRUE | FALSE 
           | var 
-          | 'new' '[' exp ']' tipo 
+          | 'new' '[' expArit ']' tipo 
           | llamada
           | '(' expArit ')'
           ; 
 
-/*  corto - circuito  */
 expRel    : OP_LOG termRel | termRel (OP_LOG termRel)*;
 termRel   : expArit OP_REL expArit | '(' expRel ')'
           ;        

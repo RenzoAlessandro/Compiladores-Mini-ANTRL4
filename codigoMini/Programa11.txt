@@ -1,2 +1,11 @@
-variable1 : int
-variable1 : int
+num1 : int
+num1 : int
+num2 : int
+
+fun main ()
+	num = 4
+	num2 = "no va"
+	if 0 < num2
+		return false
+	end
+end

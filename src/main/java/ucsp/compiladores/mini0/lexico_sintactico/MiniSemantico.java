@@ -11,7 +11,7 @@ package ucsp.compiladores.mini0.lexico_sintactico;
  */
 import ucsp.compiladores.mini0.lexico_sintactico.TablaDeSimbolos.TipoMini;
 
-public class MiniSemantico extends MiniBaseVisitor<Void> {
+public class MiniSemantico extends MiniBaseVisitor<Void>{
     
     TablaDeSimbolos tabla;
     
@@ -56,6 +56,8 @@ public class MiniSemantico extends MiniBaseVisitor<Void> {
         TipoMini tipoExpresion = MiniSemanticoUtils.verificarTipo(tabla, ctx.expArit());
         if (tipoExpresion != TipoMini.INVALIDO) {
             String nombreVar = ctx.var().ID().getText();
+            MiniSemanticoUtils.adicionarErrorSemantico(ctx.var().ID().getSymbol(),
+               "Variable " + nombreVar + " INGRESEEE");
             if (!tabla.existe(nombreVar)) {
                 MiniSemanticoUtils.adicionarErrorSemantico(ctx.var().ID().getSymbol(),
                "Variable " + nombreVar + " no fue declarada antes de uso");
@@ -87,5 +89,5 @@ public class MiniSemantico extends MiniBaseVisitor<Void> {
         MiniSemanticoUtils.verificarTipo(tabla, ctx);
         return super.visitExpArit(ctx);
     }
-
+    
 }
