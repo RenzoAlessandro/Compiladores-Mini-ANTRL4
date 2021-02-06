@@ -1,11 +1,25 @@
 num1 : int
 num1 : int
 num2 : int
+str  : string
+b    : bool
 
 fun main ()
 	num = 4
+	num1 = 0
 	num2 = "no va"
-	if 0 < num2
-		return false
+	b = 4
+
+	if ( 0xf < num1 )
+		num2 = 5
+	else if num1 < 1
+		num1 = 43
 	end
+	
+	while num1 < 10
+		num2 = 6 + 8
+		num2 = 6
+		str = 8
+	loop
+
 end

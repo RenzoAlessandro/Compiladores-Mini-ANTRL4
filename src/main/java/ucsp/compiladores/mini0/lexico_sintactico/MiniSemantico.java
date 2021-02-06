@@ -44,7 +44,7 @@ public class MiniSemantico extends MiniBaseVisitor<Void>{
         }
         
         if (tabla.existe(nombreVar)) {
-            MiniSemanticoUtils.adicionarErrorSemantico(ctx.ID().getSymbol(), "Variable" + nombreVar + " ya existe");
+            MiniSemanticoUtils.adicionarErrorSemantico(ctx.ID().getSymbol(), "Variable " + nombreVar + " ya existe");
         } else {
             tabla.adicionar(nombreVar, tipoVar);
         }
@@ -56,8 +56,6 @@ public class MiniSemantico extends MiniBaseVisitor<Void>{
         TipoMini tipoExpresion = MiniSemanticoUtils.verificarTipo(tabla, ctx.expArit());
         if (tipoExpresion != TipoMini.INVALIDO) {
             String nombreVar = ctx.var().ID().getText();
-            MiniSemanticoUtils.adicionarErrorSemantico(ctx.var().ID().getSymbol(),
-               "Variable " + nombreVar + " INGRESEEE");
             if (!tabla.existe(nombreVar)) {
                 MiniSemanticoUtils.adicionarErrorSemantico(ctx.var().ID().getSymbol(),
                "Variable " + nombreVar + " no fue declarada antes de uso");

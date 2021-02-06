@@ -67,6 +67,12 @@ public class MiniSemanticoUtils {
         if (ctx.LITSTRING() != null) {
             return TablaDeSimbolos.TipoMini.STRING;
         }
+        if (ctx.TRUE()!= null) {
+            return TablaDeSimbolos.TipoMini.BOOL;
+        }
+        if (ctx.FALSE()!= null) {
+            return TablaDeSimbolos.TipoMini.BOOL;
+        }
         if (ctx.var() != null) {
             String nombreVar = ctx.var().getText();
             if (!tabla.existe(nombreVar)) {

@@ -24,8 +24,8 @@ funcion   : 'fun' ID '(' params? ')' (':' tipo)? nl
             'end' NL
           ;
 
-bloque    : (cmd=comando { System.out.println("    COMANDO DE TIPO: "+$cmd.tipoComando); } nl)*
-            (declvar nl)*
+bloque    : (declvar nl)*
+            (cmd=comando { System.out.println("    COMANDO DE TIPO: "+$cmd.tipoComando); } nl)*
           ;
  
 params    : parametro (',' parametro)*
@@ -91,7 +91,8 @@ factorArit: LITNUMERAL
           | '(' expArit ')'
           ; 
 
-expRel    : OP_LOG termRel | termRel (OP_LOG termRel)*;
+expRel    : OP_LOG termRel | termRel (OP_LOG termRel)*
+            { System.out.println("    EXPR REL"); };
 termRel   : expArit OP_REL expArit | '(' expRel ')'
           ;        
 
@@ -106,7 +107,7 @@ FALSE : 'false';
 
 PALABRAS_RESERVADAS :  'if' | 'else' | 'end' | 'while' | 'loop' | 'fun' |
                        'return' | 'new' | 'string' | 'int' | 'char' |
-                       'bool' | TRUE | FALSE | 'and' | 'or' | 'not'
+                       'bool' | 'true' | 'false' | 'and' | 'or' | 'not'
                     ;
 
 LITNUMERAL :  ( ('+'|'-')?('0'..'9') | (('0x') ('0'..'9'|'a'..'f'|'A'..'F')+) )+
