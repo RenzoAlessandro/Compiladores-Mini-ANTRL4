@@ -13,11 +13,12 @@ import ucsp.compiladores.mini0.lexico_sintactico.MiniParser.ProgramaContext;
 
 /**
  *
- * @author renzoalesandro
+ * @authors Anabel Paredes,  Renzo Sucari & Gino Lisa
  */
 public class Principal {
     
-    public static void main(String args[]) throws IOException {
+    
+    public static void main(String[] args) throws IOException{
         System.out.println("Inicio del Compilador.");
         CharStream cs = CharStreams.fromFileName(args[0]);
         MiniLexer lexer = new MiniLexer(cs);
@@ -28,7 +29,5 @@ public class Principal {
         as.visitPrograma(arbol);
         MiniSemanticoUtils.erroresSemanticos.forEach((s) -> System.out.println(s));
         System.out.println("Finalizo el Compilador.");
-        
     }
-    
 }

@@ -10,42 +10,43 @@ import java.util.Map;
 
 /**
  *
- * @author renzoalesandro
+ * @authors Anabel Paredes,  Renzo Sucari & Gino Lisa
  */
 public class TablaDeSimbolos {
-    
     public enum TipoMini {
         ENTERO,
+        BOOL,
+        CHAR,
         STRING,
         INVALIDO
     }
-    
-    class EntradaTablaDeSimbolos { 
-        String nombre;
-        TipoMini tipo;
-        
-        private EntradaTablaDeSimbolos(String nombre, TipoMini tipo) { 
+    class EntradaTablaDeSimbolos {
+       String nombre;
+       TipoMini tipo;
+       private EntradaTablaDeSimbolos(String nombre, TipoMini tipo) {
             this.nombre = nombre;
             this.tipo = tipo;
-        } 
-    }
-    
+       }
+   }
+
+    //creamos una sola tabla de simbolos( no maneja ambitos  - porque Algumar no maneja)
     private final Map<String, EntradaTablaDeSimbolos> tabla;
-    
+
     public TablaDeSimbolos() {
-        this.tabla = new HashMap<>();
+       this.tabla = new HashMap<>();
     }
-    
-    public void adicionar(String nombre, TipoMini tipo) { 
-        tabla.put(nombre, new EntradaTablaDeSimbolos(nombre, tipo));
+
+    public void adicionar(String nombre, TipoMini tipo) {
+        //adiciona un elemento a la tabla de simbolos
+       tabla.put(nombre, new EntradaTablaDeSimbolos(nombre, tipo));
     }
-    
-    public boolean existe(String nombre) { 
-        return tabla.containsKey(nombre);
+
+    public boolean existe(String nombre) {
+        //verificar si existe este 'nombre' si exite el valor en la tabla de simbolos
+       return tabla.containsKey(nombre);
     }
-    
-    public TipoMini verificar(String nombre) { //retorna tipo de variable 
-        return tabla.get(nombre).tipo;
-    } 
-    
+
+    public TipoMini verificar(String nombre) { //retorna tipo de variable
+       return tabla.get(nombre).tipo;
+    }
 }

@@ -22,15 +22,15 @@ fun main() :bool
   while c <> 0
      _int = 46+(46-2)
   loop
-  return c and b
+  return c + b
 end
 
 fun hehe(c:char):bool
    i: int
    i = 0
-   if c = 64
+   if c < 64
       while i < 10
-         if i / 2 * 2 = i
+         if i / 2 * 2 <= i
             return a
          else
             return c
