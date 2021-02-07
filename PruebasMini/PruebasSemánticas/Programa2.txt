@@ -6,7 +6,13 @@
 */
 
 fun the_answer():char
-   return 42
+    b:int
+    j:int
+    z:int
+    if j > b
+        z=z*3
+    end
+    return 42
 end
 
 fun main() :bool
@@ -22,15 +28,16 @@ fun main() :bool
   while c <> 0
      _int = 46+(46-2)
   loop
-  return c and b
+  return c + b
 end
 
 fun hehe(c:char):bool
    i: int
+   j: string
    i = 0
-   if c = 64
-      while i < 10
-         if i / 2 * 2 = i
+   if c < 64
+      while j < 10
+         if i <= j
             return a
          else
             return c

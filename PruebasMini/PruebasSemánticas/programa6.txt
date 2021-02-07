@@ -1,0 +1,7 @@
+var1:int
+var2:int
+
+fun main()
+    var1 = "algo"
+    var2 = true
+end

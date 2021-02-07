@@ -1,0 +1,7 @@
+var1:int
+
+fun main()
+    var1 = 10
+end
+
+

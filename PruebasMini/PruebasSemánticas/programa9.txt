@@ -1,0 +1,12 @@
+var1:int
+var2:string
+var3:bool
+
+fun main()
+    var1 = 10
+    var1 = 2
+    var2 = "al"
+    var2 = "go"
+    var3 = true
+    var3 = false
+end

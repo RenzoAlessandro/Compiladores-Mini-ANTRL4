@@ -1,8 +1,8 @@
 /* 
     PRUEBA DE NL
 */
-one
-another
+one : int
+another : string
 
 two_later
 

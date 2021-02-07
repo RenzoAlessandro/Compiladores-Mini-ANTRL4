@@ -1,0 +1,8 @@
+a:int
+b:string
+
+fun main() :bool
+  a=10
+  b="25"
+  return a + b
+end

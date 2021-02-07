@@ -1,0 +1,6 @@
+var1:int
+var1:int
+var2:string
+var2:string
+var3:bool
+var3:bool

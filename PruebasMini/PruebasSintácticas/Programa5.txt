@@ -1,6 +1,6 @@
 //Line comment
 fun foo(var:bool, _var2:int) :string
-    if 0xFA <>var2
+    if 0xFA <> var2
         intvariable:int
         stringvariable:string 
         boolvariable:bool
@@ -12,7 +12,7 @@ fun foo(var:bool, _var2:int) :string
         a = "string"
         
         _int = 46+(46-2)
-        _int = _int / 2       
+        _int = _int/2       
         
         /*   /  */
             //Nested comment
@@ -20,5 +20,4 @@ fun foo(var:bool, _var2:int) :string
     end
     
     return a
-    
 end
