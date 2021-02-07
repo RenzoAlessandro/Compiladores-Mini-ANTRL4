@@ -54,5 +54,5 @@ fun Main():string
 end
 ```
 #### SALIDA: ANÁLISIS DEL LENGUAJE MINI-0 (Programa1.txt)
-<img src= "ImgMiniAnalizador.PNG">
+<img src= "https://github.com/RenzoAlessandro/Compiladores-Mini-ANTRL4/blob/RenzoLexicoSintaxis/ImgMiniAnalizador.png">
 
