@@ -1,24 +1,23 @@
-num1 : int
-num1 : int
-num2 : int
-str  : string
-b    : bool
+ num1 : int
+ num2 : int
+ str  : string
+ b    : bool
 
-fun main ()
-	num = 4
-	num1 = 0
-	num2 = "no va"
-	b = 4
+ fun main ()
+ 	num = 4
+ 	num1 = 0
+ 	num2 = "no va"
+ 	b = 4
 
-	if ( 0xf < num1 )
-		num2 = 5
-	else if num1 < 1
-		num1 = 43
-	end
-	
-	while num1 < 10 and num2 <> 100 or num34 == 12
-		num2 = 6 + 8
-		num2 = 6
-		str = 8
-	loop
-end
+ 	if ( 0xf < num1 )
+ 		num2 = 5
+ 	else if num1 < 1
+ 		num1 = 43
+ 	end
+
+ 	while num1 < 10 and num45 <> 100 or num34 <= 12
+ 		num2 = 6 + 8
+ 		num2 = 6
+ 		str = 8
+ 	loop
+ end
