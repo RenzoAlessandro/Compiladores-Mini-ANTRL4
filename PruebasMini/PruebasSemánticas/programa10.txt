@@ -1,0 +1,5 @@
+fun main()
+    var1 = 15
+    var2 = "algo"
+    var3 = true
+end

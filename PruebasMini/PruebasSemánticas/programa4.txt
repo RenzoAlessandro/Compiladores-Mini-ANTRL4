@@ -1,0 +1,17 @@
+var1:int
+var2:int 
+var3:int 
+var4:int
+var5v:bool
+var5f:bool
+var6:string
+
+fun main()
+    var1 = -10
+    var2 = 10
+    var3 = +10
+    var4 = 0xac12
+    var5v = true
+    var5f = false
+    var6 = "algo"    
+end
