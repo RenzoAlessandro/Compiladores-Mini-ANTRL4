@@ -88,4 +88,11 @@ public class MiniSemantico extends MiniBaseVisitor<Void>{
         return super.visitExpArit(ctx);
     }
     
+    @Override
+    public Void visitExpRel(MiniParser.ExpRelContext ctx) {
+        MiniSemanticoUtils.verificarTipo(tabla, ctx);
+        return super.visitExpRel(ctx); 
+    }
+
+    
 }

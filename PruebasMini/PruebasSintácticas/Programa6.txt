@@ -6,7 +6,7 @@ fun fibonacci(i:int):int
    if i <= 1
       return 1
    else
-      return fibonacci(i-(1)) + fibonacci(i-(2))
+      return fibonacci(i - 1) + fibonacci(i - 2)
    end
 end
 

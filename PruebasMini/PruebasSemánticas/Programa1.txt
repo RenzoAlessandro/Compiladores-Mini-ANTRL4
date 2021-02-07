@@ -16,7 +16,7 @@ fun main ()
 		num1 = 43
 	end
 	
-	while num1 < 10 and num45 <> 100 or num34 == 12
+	while num1 < 10 and num2 <> 100 or num34 == 12
 		num2 = 6 + 8
 		num2 = 6
 		str = 8

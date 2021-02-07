@@ -28,6 +28,6 @@ fun Main():string
         numero2 = aux
     end
 
-    return "FIN"
+    return "FIN" + 1
 
 end

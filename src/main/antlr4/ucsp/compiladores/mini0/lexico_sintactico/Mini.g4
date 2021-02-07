@@ -140,8 +140,8 @@ factorArit: LITNUMERAL
           | LITSTRING 
           | TRUE | FALSE 
           | var 
-          | 'new' '[' expArit ']' tipo 
           | llamada
+          | 'new' '[' expArit ']' tipo 
           | '(' expArit ')'
           ; 
 

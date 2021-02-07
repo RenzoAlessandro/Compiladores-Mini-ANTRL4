@@ -12,9 +12,11 @@ package ucsp.compiladores.mini0.lexico_sintactico;
 import java.util.ArrayList;
 import java.util.List;
 import org.antlr.v4.runtime.Token;
+import ucsp.compiladores.mini0.lexico_sintactico.MiniParser.ExpAritContext;
 
 import ucsp.compiladores.mini0.lexico_sintactico.MiniParser.TermAritContext;
 import ucsp.compiladores.mini0.lexico_sintactico.MiniParser.FactorAritContext;
+import ucsp.compiladores.mini0.lexico_sintactico.MiniParser.TermRelContext;
 
 public class MiniSemanticoUtils {
     
@@ -57,6 +59,39 @@ public class MiniSemanticoUtils {
         }
         return ret;
     }
+    
+    public static TablaDeSimbolos.TipoMini verificarTipo(TablaDeSimbolos tabla, 
+   MiniParser.ExpRelContext ctx) {
+        TablaDeSimbolos.TipoMini ret = null;
+        for (TermRelContext ta : ctx.termRel()) {
+            TablaDeSimbolos.TipoMini aux = verificarTipo(tabla, ta);
+            if (ret == null) {
+                ret = aux;
+            } else if (ret != aux && aux != TablaDeSimbolos.TipoMini.INVALIDO) {
+                adicionarErrorSemantico(ctx.start, "Expresión " + ctx.getText() + " contiene tipos incompatibles");
+                ret = TablaDeSimbolos.TipoMini.INVALIDO;
+            }
+        }
+        return ret;
+    }
+    
+    public static TablaDeSimbolos.TipoMini verificarTipo(TablaDeSimbolos tabla,
+   MiniParser.TermRelContext ctx) {
+        TablaDeSimbolos.TipoMini ret = null;
+        for (ExpAritContext fa : ctx.expArit()) {
+            TablaDeSimbolos.TipoMini aux = verificarTipo(tabla, fa);
+            if (ret == null) {
+                //tipo del 1er o unico término aritmetico
+                ret = aux;
+            } else if (ret != aux && aux != TablaDeSimbolos.TipoMini.INVALIDO) {
+                adicionarErrorSemantico(ctx.start, "Término " + ctx.getText() + " contiene tipos incompatibles");
+                ret = TablaDeSimbolos.TipoMini.INVALIDO;
+            }
+        }
+        return ret;
+    }
+    
+
 
     public static TablaDeSimbolos.TipoMini verificarTipo(TablaDeSimbolos tabla,
    MiniParser.FactorAritContext ctx) {
